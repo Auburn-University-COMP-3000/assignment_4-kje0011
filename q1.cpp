@@ -7,13 +7,14 @@ class GasPump {
 	private:
 		double amountDispensed,
 		       amountCharged,
-		       costPerGallon;
+		       costPerGallon,
+			   totalGas,
+			   totalCost;
 
 	public:
 		double cost,
 		time;
 		double getAmountDispensed() {
-			// amountDispensed = 0;
 			amountDispensed = 0.10 * time;
 			return amountDispensed; 
 			}
@@ -25,17 +26,7 @@ class GasPump {
 			costPerGallon = cost;
 			return costPerGallon;
 			}
-		void setCostPerGallon(double cpg) { 
-			costPerGallon = cpg; 
-			}
-        
-		void dispense(int seconds) {
-
-
-			amountCharged = amountDispensed * costPerGallon;
-		}
 		void reset() {
-            
 			amountDispensed = 0.0;
 			amountCharged = 0.0;
 		}		
@@ -46,15 +37,15 @@ int main() {
 	char fill = 'x';
   
 	do {
-		cout << "Enter cost of gas per gallon: " << endl;
+		cout << "Enter cost of gas per gallon: $";
 		cin >> pump.cost;
-		cout << "Enter how long gas is pumped (in seconds): " << endl;
+		cout << "Enter how long gas is pumped (in seconds): ";
 		cin >> pump.time;
 		pump.getAmountDispensed();
 		pump.getAmountCharged();
-		cout << "Amount of gas dispensed (in gallons): " << pump.getAmountDispensed() << endl;
-		cout << "Amount charged for gas: $" << pump.getAmountCharged() << endl;
-		cout << "The cost per gallon: $" << pump.getCostPerGallon() << endl;
+		cout << "Amount of gas dispensed (in gallons): " << fixed << setprecision(2) << pump.getAmountDispensed() << endl;
+		cout << "Amount charged for gas: $" << fixed << setprecision(2) << pump.getAmountCharged() << endl;
+		cout << "The cost per gallon: $" << fixed << setprecision(2) << pump.getCostPerGallon() << endl;
 		cout << "Enter Y to dispense again: ";
 		cin >> fill;
 	}
