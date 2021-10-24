@@ -219,11 +219,76 @@ void Month::getMonthByName(istream& in) {
             else error(c1,c2,c3);
           else error(c1,c2,c3);
   }
+Month::Month(){
+
+
+}
 
 int main(){
   cout << "test construstor" << endl;
   Month m;
   m = Month('j','a','n');
   m.outputMonthNumber( cout ); cout << " ";
-  m.outputMonthName(cout); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('f','e','b');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('m','a','r');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('a','p','r');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('m','a','y');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('j','u','n');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('j','u','l');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('a','u','g');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('s','e','p');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('o','c','t');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('n','o','v');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+  m = Month('d','e','c');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " \n";
+
+  cout << "test month(int)" << endl;
+  int i=1;
+  while (i <=12){
+    Month mo(i);
+    mo.outputMonthNumber( cout ); cout << " ";
+    mo.outputMonthName(cout); cout << " \n";
+    i++;
+  }
+
+  cout << "test getMonthByName" << endl;
+  i=1;
+  Month mo;
+  while(i <= 12){
+    mo.getMonthByName(cin);
+    mo.outputMonthNumber( cout ); cout << " ";
+    mo.outputMonthName(cout); cout << " \n";
+  }
+
+  cout << "test getMonthByNumber" << endl;
+  i=1;
+  while (i<=12){
+    mo.getMonthByNumber(cin);
+    mo.outputMonthNumber( cout ); cout << " ";
+    mo.outputMonthName(cout); cout << " \n";
+  }
+
+
 }
