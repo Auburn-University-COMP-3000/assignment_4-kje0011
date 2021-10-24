@@ -64,12 +64,12 @@ void Month::outputMonthName(ostream& out){
   else if (12 == mnth) out << "Dec";
 }
 void error(char c1, char c2, char c3){
-  cout << endl << c1 << c2 << c3 << "is not a month. Exiting\n";
-  exit(1);
+  cout << endl << c1 << c2 << c3 << " is not a month. \n";
+  
 }
 void error(int n){
-  cout << endl << n << "is not a month number. Exiting\n";
-  exit(1);
+  cout << endl << n << " is not a month number.\n";
+  
 }
 void Month::getMonthByNumber(istream& in){
   in >> mnth;
@@ -273,14 +273,19 @@ int main(){
     i++;
   }
 
+  Month mo;
+  
+
   cout << "test getMonthByName" << endl;
   i=1;
-  Month mo;
+  
   while(i <= 12){
     mo.getMonthByName(cin);
     mo.outputMonthNumber( cout ); cout << " ";
     mo.outputMonthName(cout); cout << " \n";
+    i++;
   }
+
 
   cout << "test getMonthByNumber" << endl;
   i=1;
@@ -288,7 +293,8 @@ int main(){
     mo.getMonthByNumber(cin);
     mo.outputMonthNumber( cout ); cout << " ";
     mo.outputMonthName(cout); cout << " \n";
+    i++;
+    
   }
-
 
 }
