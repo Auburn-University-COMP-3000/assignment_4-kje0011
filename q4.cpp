@@ -31,3 +31,199 @@ public:
 private:
   int mnth;
 };
+
+
+int Month::monthNumber(){
+  return mnth;
+}
+
+Month Month::nextMonth() {
+  int nextMonth = mnth + 1;
+  if (nextMonth == 13) 
+    nextMonth =1;
+  return Month(nextMonth);
+}
+Month::Month(int monthNumber){
+  mnth = monthNumber;
+}
+void Month::outputMonthNumber(ostream& out) {
+  out << mnth;
+}
+void Month::outputMonthName(ostream& out){
+  if (1 == mnth) out << "Jan";
+  else if (2 == mnth) out << "Feb";
+  else if (3 == mnth) out << "Mar";
+  else if (4 == mnth) out << "Apr";
+  else if (5 == mnth) out << "May";
+  else if (6 == mnth) out << "Jun";
+  else if (7 == mnth) out << "Jul";
+  else if (8 == mnth) out << "Aug";
+  else if (9 == mnth) out << "Sep";
+  else if (10 == mnth) out << "Oct";
+  else if (11 == mnth) out << "Nov";
+  else if (12 == mnth) out << "Dec";
+}
+void error(char c1, char c2, char c3){
+  cout << endl << c1 << c2 << c3 << "is not a month. Exiting\n";
+  exit(1);
+}
+void error(int n){
+  cout << endl << n << "is not a month number. Exiting\n";
+  exit(1);
+}
+void Month::getMonthByNumber(istream& in){
+  in >> mnth;
+}
+void Month::getMonthByName(istream& in) {
+  char c1, c2, c3;
+  in >> c1 >> c2 >> c3;
+  c1 = tolower(c1);
+  c2 = tolower(c2);
+  c3 = tolower(c3);
+  if ('j' == c1)
+    if('a' == c2)
+      mnth = 1;
+  else 
+    if('u' == c2)
+      if ('n' == c3)
+          mnth = 6;
+      else if ('l' == c3)
+        mnth =7;
+      else error(c1,c2,c3);
+    else error(c1,c2,c3);
+  else
+    if('f' == c1)
+      if('e' == c2)
+        if('b' == c3)
+          mnth = 2;
+        else error(c1,c2,c3);
+      else error(c1,c2,c3);
+  else
+    if ('m' == c1)
+      if('a' == c2)
+        if('y'==c3)
+          mnth = 5;
+        else
+          if('r'==c3)
+            mnth = 3;
+          else error(c1,c2,c3);
+        else error(c1,c2,c3);
+      else
+        if('a'==c1)
+          if('p'==c2)
+            if('r'==c3)
+              mnth=4;
+            else error(c1,c2,c3);
+          else
+            if('u'==c2)
+              if('g'==c3)
+                mnth=8;
+              else error(c1,c2,c3);
+            else error(c1,c2,c3);
+      else
+        if('s'==c1)
+          if('e'==c2)
+            if('p'==c3)
+              mnth=9;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+      else 
+        if('o'==c1)
+          if('c'==c2)
+            if('t'==c3)
+              mnth=10;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+      else 
+        if('n'==c1)
+          if('o'==c2)
+            if('v'==c3)
+              mnth=11;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+      else
+        if('d'==c1)
+          if('e'==c2)
+            if('c'==c3)
+              mnth=12;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+}
+  Month::Month(char c1, char c2, char c3) {
+    c1 = tolower(c1);
+    c2 = tolower(c2);
+    c3 = tolower(c3);
+    if ('j' == c1)
+      if('a' == c2)
+        mnth = 1;
+      else if('u' == c2)
+        if ('n' == c3)
+          mnth = 6;
+      else if ('l' == c3)
+        mnth =7;
+      else error(c1,c2,c3);
+    else error(c1,c2,c3);
+  else if('f' == c1)
+    if('e' == c2)
+      if('b' == c3)
+        mnth = 2;
+      else error(c1,c2,c3);
+    else error(c1,c2,c3);
+  else
+    if ('m' == c1)
+      if('a' == c2)
+        if('y'==c3)
+          mnth = 5;
+        else if('r' == c3)
+          mnth = 3;
+        else error(c1,c2,c3);
+    else error(c1,c2,c3);
+      else
+        if('a'==c1)
+          if('p'==c2)
+            if('r'==c3)
+              mnth=4;
+            else error(c1,c2,c3);
+          else
+            if('u'==c2)
+              if('g'==c3)
+                mnth=8;
+              else error(c1,c2,c3);
+            else error(c1,c2,c3);
+      else
+        if('s'==c1)
+          if('e'==c2)
+            if('p'==c3)
+              mnth=9;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+      else 
+        if('o'==c1)
+          if('c'==c2)
+            if('t'==c3)
+              mnth=10;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+      else 
+        if('n'==c1)
+          if('o'==c2)
+            if('v'==c3)
+              mnth=11;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+      else
+        if('d'==c1)
+          if('e'==c2)
+            if('c'==c3)
+              mnth=12;
+            else error(c1,c2,c3);
+          else error(c1,c2,c3);
+  }
+
+int main(){
+  cout << "test construstor" << endl;
+  Month m;
+  m = Month('j','a','n');
+  m.outputMonthNumber( cout ); cout << " ";
+  m.outputMonthName(cout); cout << " ";
+}
