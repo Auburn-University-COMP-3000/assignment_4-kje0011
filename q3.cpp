@@ -8,7 +8,7 @@ class Player
  private:
    string name;
    int score;
-   int numPlayers;
+
  public:
    Player(){
      name ="";
@@ -30,8 +30,31 @@ class Player
    int getScore(){
      return score;
    }
-   void addPlayer(int &numPlayer, vector<Player> players){
-     if (numPlayer == 10){
+  
+};
+
+int main() {
+  Player play;
+  char ans;
+  string name = "";
+  int score = 0;
+  int numPlay = 0;
+  vector<Player> players; 
+
+  do{ 
+  cout << "Do you want to add a player? (A)" << endl;
+  cout << "Do you want to print players and scores? (P)" << endl;
+  cout << "Do you want to remove a player? (R)" << endl;
+  cout << "Do you want to search for a player? (S)" << endl;
+  cout << "Do you want to exit? (E)" << endl;
+  cout << "Enter A,P,R,S, or E" << endl;
+  cin >> ans;
+
+  switch (ans)
+  {
+    case 'A':{
+     numPlay = players.size();
+     if (numPlay == 10){
        cout << "Player array full." << endl;
      }
      else{
@@ -41,70 +64,59 @@ class Player
        cin >> score;
        Player newPlayer(score, name);
        players.push_back(newPlayer);
-       numPlayer++;
+       numPlay++;
      }
-   }
-   void printPlayers(int numPlayers, vector<Player> players){
-     cout << "Player Scores" << endl;
-     for (int i=0; i < numPlayers; i++){
-      cout << players[i].getName() << " " << players[i].getScore() << endl;
-     }
-   }
-   void removePlayer(int &numPlayer, vector<Player> players){
-     cout << "Enter player name to remove" << endl;
-     cin >> name;
-     int nameLoc = -1;
-     for (int i = 0; i < players.size(); i++){
-       if (name == players[i].getName())
-       nameLoc = i;
-     }
-   }
-};
-
-int main() {
-  Player play;
-  char ans;
-  string name = "";
-  int score = 0;
-  int numPlay = 0;
-  vector<Player> players;
-  cout << "Add a player" << endl;
-  cin >> name;
-  cout << "Enter player's score" << endl;
-  cin >> score;
-
-
-  do{ 
-  cout << "Do you want to add a another player? (A)" << endl;
-  cout << "Do you want to print players and scores? (P)" << endl;
-  cout << "Do you want to remove a player? (R)" << endl;
-  cout << "Do you want to exit? (E)" << endl;
-  cout << "Enter A,P,R, or E" << endl;
-  cin >> ans;
-
-  numPlay = players.size();
-  cout << numPlay;
-  switch (ans)
-  {
-    case 'A':{
-      play.addPlayer(numPlay,vector<Player> (players));
       break;
     }
     case 'P':{
-      play.printPlayers(numPlay,vector<Player> (players));
+      cout << "Player Scores" << endl;
+     for (int i=0; i < numPlay; i++)
+      cout << players[i].getName() << " " << players[i].getScore() << endl;
       break;
     }
     case 'R':{
-      play.removePlayer(numPlay,vector<Player> (players));
+      
+      cout << "Enter player name to remove" << endl;
+      cin >> name;
+      int nameLoc = -1;
+      for (int i = 0; i < players.size(); i++){
+        if (name == players[i].getName()){
+          nameLoc = i;
+          break;
+        }
+     }
+      if(nameLoc != -1){
+        players.erase(players.begin() +nameLoc);
+      }
+      else {
+        cout << "No players removed." << endl;
+      }
       break;
     }
+    case 'S':{
+      string nameSearch = "";
+      bool nameFound = false;
+      cout << "Enter a player name to search for their score." << endl;
+      cin >> name;
+      for (int i = 0; i < players.size(); i++){
+        if (name == players[i].getName()){
+          cout << "Score:" << players[i].getScore() << endl;
+          nameFound = true;
+          break;
+        }
+      }
+      if(!nameFound){
+        cout << "There is no player with this name." << endl;
+      }
+    }
+    break;
     case 'E':{
       break;
     }
   }
   
   }
-  while(ans == 'A' || ans == 'P' || ans == 'R') ;
+  while(ans == 'A' || ans == 'P' || ans == 'R' || ans == 'S') ;
   
 }
 
